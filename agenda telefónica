@@ -1,0 +1,155 @@
+def agenda():
+
+    print('******* AGENDA PEREIRA *******')
+
+    print('1.- Crear nombre de la lista')
+
+    print('2.- Ingrezar datos')
+
+    print('3.- Busqueda en directorio')
+
+    print('4.- Edito la lista')
+
+    print('5.- Mostrar lista')
+
+    print('6.- Salir')
+
+    print()
+def agenda2():
+
+    print('a.- Busqueda por nombre')
+
+    print('b.- Busqueda por telefono')
+
+    print('c.- Busqueda por direccion')
+def agenda3():
+
+    print("Editar lista")
+
+    print('1.- Eliminar un contacto')
+
+    print('2.- Editar un contacto')
+directorio = []
+
+telefonos = {}
+
+nombres = {}
+
+direcciones = {}
+
+apodos = {}
+
+opcionagenda = 0
+
+agenda()
+
+x=0
+
+while opcionagenda != 6:
+    opcionagenda = int(input("Inserta un numero para elegir una opcion: "))
+
+    if opcionagenda == 1:
+
+        print('Ingrese el nombre de la lista:')
+
+        nombre_de_lista = input()
+
+        agenda()
+    elif opcionagenda == 2:
+
+        print("Agregar Nombre, telefono, direccion y apodo")
+
+        nombre = input("Nombre: ")
+
+        telefono = input("Telefono: ")
+
+        direccion = input("Direccion: ")
+
+        apodo = input("Apodo: ")
+
+        telefonos[nombre] = telefono
+
+        nombres[telefono] = nombre
+
+        direcciones[direccion] = nombre
+
+        directorio.append([nombre, telefono, direccion, apodo])
+
+        agenda()
+    elif opcionagenda == 3:
+
+        print("Busqueda")
+
+        agenda2()
+
+        opcionagenda2 = input("Inserta una letra para elegir una opcion: ")
+
+        if opcionagenda2=="a":
+
+            nombre = input("Nombre: ")
+
+            if nombre in telefonos:
+
+                print("El telefono es", telefonos[nombre])
+            else:
+
+                print(nombre, "no se encuentra")
+        if opcionagenda2=="b":
+
+            telefono = input("Telefono: ")
+
+            if telefono in nombres:
+
+                print("El Nombre es", nombres[telefono])
+            else:
+
+                print(telefono, "no se encuentra")
+        if opcionagenda2=="c":
+
+            direccion = input("direccion: ")
+
+            for linea in direcciones:
+
+                linea = linea.rstrip()
+
+                if not linea.startswith(direccion) : continue
+
+                palabras = linea.split()
+
+                print()
+            else:
+
+                print(direccion, "no se encuentra")
+        agenda()
+    elif opcionagenda == 4:
+
+        agenda3()
+
+        opcionagenda3 = input("Inserta un numero para elegir una opcion: ")
+
+        if opcionagenda3=="1":
+
+            nombre = input("Nombre: ")
+
+            if nombre in directorio[0:10]:
+
+                print('borrado')
+            else:
+
+                print(nombre, "no encontrado")
+        else:
+
+            agenda()
+        agenda()
+    elif opcionagenda == 5:
+
+        print("\nNombre de la lista: ",nombre_de_lista)
+
+        for e in directorio:
+
+            print("\nLa lista es: ",directorio)
+        agenda()
+    elif opcionagenda != 6:
+
+        agenda()
+print("*** usted a salido de la agenda pereira ***")
